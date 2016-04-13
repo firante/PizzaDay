@@ -1,1 +1,3 @@
-import {Meteor} from 'meteor/meteor'
+//alert(new Mongo.Collection('users'));
+
+var c = Mongo.Collection.users.find();
