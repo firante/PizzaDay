@@ -1,3 +1,3 @@
 //alert(new Mongo.Collection('users'));
-
-var c = Mongo.Collection.users.find();
+employers = new Mongo.Collection('employers');
+ss = 0;

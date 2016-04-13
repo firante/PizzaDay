@@ -5,6 +5,10 @@
 <body>
   {{> header}}
   {{> loginButtons}}
-  {{> het}}
+
+  {{#if currentUser}}
+    {{> pizzaDays}}
+  {{/if}}
+
 
 </body>
