@@ -20,7 +20,13 @@
 
       <div class='tab-content'>
         <div role='tabpanel' class='tab-pane active' id='IOrganized'>
-          <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'> MyPizzaDays </div>
+          <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+            <div class='panel-group' id='daysList' role='tablist' aria-multiselectable='true'>
+              {{#each meetings}}
+                {{> meeting}}
+              {{/each}}
+            </div>
+          </div>
           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
             <button type='button' class='btn btn-default' data-toggle='modal' data-target='#modalAddPizzaDay'>
                Add Pizza Day

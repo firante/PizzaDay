@@ -1,0 +1,17 @@
+<template name='meeting'>
+  <div class='panel panel-default'>
+    <div class='panel-heading' role='tab' id='heading_{{datePizza}}'>
+      <h5 class='panel-title'>
+        <a role='button' data-toggle='collapse' data-parent='#daysList'
+          href='#collapse_{{datePizza}}' aria-expanded='true' aria-controls='collapse_{{datePizza}}'>
+          <span class='lead'> Pizza Day created {{ovnerPizza}} </span>
+        </a>
+        <span class='small'>{{datePizza}}</span>
+      </h5>
+    </div>
+    <div id='collapse_{{datePizza}}' class='panel-collapse collapse collapse' role='tabpanel'
+      aria-labelledby='heading_{{datePizza}}'>
+      {{> panelBody}}
+    </div>
+  </div>
+</template>

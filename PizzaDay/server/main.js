@@ -7,4 +7,12 @@ Meteor.startup(() => {
     return employers.find({'firstName': firstName, 'lastName': lastName});
   });
 
+  Meteor.publish('allEmployers', function() {
+    return employers.find();
+  });
+
+  Meteor.publish('pizzaDay', function() {
+    return pizzaDay.find();
+  });
+
 });

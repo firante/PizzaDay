@@ -1,0 +1,19 @@
+<template name='panelBody'>
+  <div class='panel-group' id='employersList' role='tablist' aria-multiselectable='true' >
+    {{#each employers}}
+    <div class='panel panel-default'>
+      <div class='panel-heading' role='tab' id='heading_{{firstName}}_{{lastName}}'>
+        <h6 class='panel-title'>
+          <a role='button' data-toggle='collapse' data-parent='#employersList' href='#collapse_{{firstName}}_{{lastName}}'
+            aria-expanded='true' aria-controls='collapse_{{firstName}}_{{lastName}}'>
+            {{firstName}} {{lastName}}
+          </a>
+        </h6>
+        <button class='btn btn-success' name='success'> Success </button>
+        <button class='btn btn-danger' name='not_success'> Not success </button>
+      </div>
+    </div>
+    {{/each}}
+
+  </div>
+</template>

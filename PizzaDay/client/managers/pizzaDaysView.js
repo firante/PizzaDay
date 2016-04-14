@@ -20,13 +20,9 @@ Template.pizzaDays.helpers({
   },
 
   // ---
-  meeting: function() {
-    return [];
+  meetings: function() {
+    Meteor.subscribe('pizzaDay');
+    return pizzaDay.find({'ovnerPizza' : Meteor.users.find().fetch()[0].profile.name}).fetch();
   }
-});
 
-// events pizzaDays template
-// Template.pizzaDays.events({
-//   'click button' : (e) => {
-//   }
-// });
+});
