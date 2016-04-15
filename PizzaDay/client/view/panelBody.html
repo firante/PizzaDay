@@ -2,15 +2,15 @@
   <div class='panel-group' id='employersList' role='tablist' aria-multiselectable='true' value='{{id}}'>
     {{#each employers id}}
     <div class='panel panel-default'>
-      <div class='panel-heading' role='tab' id='heading_{{firstName}}_{{lastName}}'>
+      <div class='panel-heading' role='tab' id='heading_{{this}}'>
         <h6 class='panel-title'>
-          <a role='button' data-toggle='collapse' data-parent='#employersList' href='#collapse_{{firstName}}_{{lastName}}'
-            aria-expanded='true' aria-controls='collapse_{{firstName}}_{{lastName}}'>
-            <span id='userName'>{{firstName}} {{lastName}}  </span>
+          <a role='button' data-toggle='collapse' data-parent='#employersList' href='#collapse_{{this}}'
+            aria-expanded='true' aria-controls='collapse_{{this}}'>
+            <span id='userName'>{{this}}  </span>
           </a>
         </h6>
 
-        {{#if currUserCheck firstName lastName}}
+        {{#if currUserCheck this}}
         <button class='btn btn-success' name='success' id='successUser'> Success </button>
 
         <button class='btn btn-danger' name='decline' id='declineUser'> Decline </button>

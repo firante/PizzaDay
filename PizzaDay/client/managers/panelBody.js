@@ -1,12 +1,12 @@
 Template.panelBody.helpers({
   employers: (id) => {
-    console.log(id)
     Meteor.subscribe('pizzaDay');
-    return pizzaDay.find().fetch();
+    var emp = pizzaDay.find({_id: id}).fetch();
+    return emp[0].allEmploy;
   },
 
-  currUserCheck: (userFirst, userLast) => {
-    if(userFirst + ' ' + userLast === Meteor.users.find().fetch()[0].profile.name) {
+  currUserCheck: (user) => {
+    if(user === Meteor.users.find().fetch()[0].profile.name) {
       return true
     } else {
       return false;
