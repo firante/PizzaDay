@@ -17,9 +17,16 @@ Template.pizzaDays.helpers({
   },
 
   // ---
-  meetings: function() {
-    Meteor.subscribe('pizzaDay');
-    return pizzaDay.find({'ovnerPizza' : Meteor.users.find().fetch()[0].profile.name}).fetch();
-  }
+  // meetings: function() {
+  //   Meteor.subscribe('pizzaDay');
+  //   return pizzaDay.find({'ovnerPizza' : Meteor.users.find().fetch()[0].profile.name}).fetch();
+  // }
 
+});
+
+// ---
+Template.pazzaDays.events({
+  'click #createNewGroup': () => {
+    groups.insert({'groupName': 'someGroup', 'groupMembers': []});
+  }
 });

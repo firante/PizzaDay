@@ -6,5 +6,8 @@ Template.addGroup.helpers({
 });
 
 Template.addGroup.events({
-  
+  'click li': (e, template) {
+    Meteor.subscribe('groups');
+    
+  }
 });
