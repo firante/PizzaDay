@@ -6,25 +6,22 @@
 
       <ul class='nav nav-tabs' role='tablist'>
         <li role='presentation' class='active'>
-          <a href='#IOrganized' aria-controls='IOrganized' role='tab' data-toggle='tab'>
-            My organized
+          <a href='#PizzaDays' aria-controls='PizzaDays' role='tab' data-toggle='tab'>
+            Pizza days
           </a>
         </li>
 
         <li role='presentation'>
-          <a href='#NotIOrganized' aria-controls='NotIOrganized' role='tab' data-toggle='tab'>
-            Not my organized
+          <a href='#Groups' aria-controls='Groups' role='tab' data-toggle='tab'>
+            Groups
           </a>
         </li>
       </ul>
 
       <div class='tab-content'>
-        <div role='tabpanel' class='tab-pane active' id='IOrganized'>
+        <div role='tabpanel' class='tab-pane' id='PizzaDays'>
           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
             <div class='panel-group' id='daysList' role='tablist' aria-multiselectable='true'>
-              {{#each meetings}}
-                {{> meeting}}
-              {{/each}}
             </div>
           </div>
           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
@@ -36,7 +33,20 @@
              </div>
           </div>
         </div>
-        <div role='tabpanel' class='tab-pane ' id='NotIOrganized'>  OthersPizzaDays </div>
+        <div role='tabpanel' class='tab-pane active' id='Groups'>
+          <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+            <div class='panel-group' id='groupList' role='tablist' aria-multiselectable='true'>
+            </div>
+          </div>
+          <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+            <button type='button' id='createNewGroup' class='btn btn-default' data-toggle='modal' data-target='#modalAddGroup'>
+               Create new group
+             </button>
+             <div class='modal fade' id='modalAddGroup' tabindex="-1" role='dialog' aria-labelledby='modalAddLabel' aria-hidden='true'>
+               {{> addGroup}}
+             </div>
+          </div>
+        </div>
       </div>
 
     </div>

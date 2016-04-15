@@ -4,7 +4,7 @@ Template.addPizzaDay.events({
     var splDate = pizzaDayDate.split('-');
     var date = new Date(splDate[0], splDate[1]-1, splDate[2]);
     Meteor.subscribe('employers');
-    console.log(employers.find().fetch());
+    
     var emplList = employers.find().fetch().map(function(value) { // list all employers for pizza day
       alert(value.firstName + " " + value.lastName)
       return value.firstName + " " + value.lastName;
