@@ -1,5 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
+import NewGroup from './NewGroup.jsx';
+
 export default class MainContent extends Component {
   render () {
     return (
@@ -14,10 +16,22 @@ export default class MainContent extends Component {
         </ul>
 
         <div className='tab-content'>
-          <div role='tabpanel' className='tab-pane' id='pizzaDays'> <span className='lead'> PizzaDays </span> </div>
-          <div role='tabpanel' className='tab-pane active' id='groups'> <span className='lead'> Groups </span> </div>
+          <div role='tabpanel' className='tab-pane' id='pizzaDays'>
+            <span className='lead'>
+              PizzaDays
+            </span>
+          </div>
+          <div role='tabpanel' className='tab-pane active' id='groups'>
+            <NewGroup employers={this.props.employers} groupMember={this.props.groupMember}/>
+            <hr />
+          </div>
         </div>
       </div>
     );
   }
+}
+
+MainContent.propTypes = {
+  employers: PropTypes.array.isRequired,
+  groupMember: PropTypes.array.isRequired,
 }
