@@ -27,6 +27,10 @@ export default class GroupModal extends Component {
     }) : null;
   }
 
+  onChange(e) {
+    Session.set('groupname', e.target.value);
+  }
+
   render() {
     return (
       <div className='modal fade' id='modalGroup' tabindex='-1' aria-labelledby='myModalLabel'>
@@ -38,7 +42,7 @@ export default class GroupModal extends Component {
                 className='form-control'
                 ref='groupname'
                 placeholder='Enter new group name...'
-                value={Session.get('groupname')} />
+                defaultValue={Session.get('groupname')} />
             </div>
 
             <div className="modal-body">
