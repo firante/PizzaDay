@@ -1,5 +1,14 @@
 import { Meteor } from 'meteor/meteor';
+import { groups } from '../collections/collections.jsx';
 
+// method what get all registered users
 export function getAllUsers () {
-  return Meteor.users.find({}, {'profile.name': 1}).fetch();
+  Meteor.subscribe('allUsers');
+  return Meteor.users.find().fetch();
+}
+
+// methos what get all created groups
+export function getAllGroups() {
+  Meteor.subscribe('groups');
+  return groups.find().fetch();
 }
