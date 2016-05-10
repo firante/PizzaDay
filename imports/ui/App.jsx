@@ -11,8 +11,8 @@ class App extends Component {
   componentWillMount() {
     Session.set('groupmembers', []);
     Session.set('newgroup', true);
-    Session.set('groupname', '');
     Session.set('editgroupId', '');
+    Session.set('groupname', '');
   }
 
   componentDidUpdate() {
@@ -30,7 +30,8 @@ class App extends Component {
                 employers={empdif}
                 groupMember={this.props.groupMember}
                 user={this.props.user.profile.name}
-                allGroups={this.props.allGroups}/>;
+                allGroups={this.props.allGroups}
+                groupname={this.props.groupname} />;
     } else {
 
     }
@@ -56,5 +57,6 @@ export default createContainer (()  => {
     employers: getAllUsers(),
     groupMember: Session.get('groupmembers'),
     allGroups: getAllGroups(),
+    groupname: Session.get('groupname'),
   };
 }, App);

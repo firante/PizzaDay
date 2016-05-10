@@ -54,7 +54,8 @@ export default class MainContent extends Component {
             <GroupModal
               employers={this.props.employers}
               groupMember={this.props.groupMember}
-              user={this.props.user} />
+              user={this.props.user} 
+              groupname={this.props.groupname}/>
             <hr />
 
             <div className='panel-group' id='groupspanel' role='tablist' aria-multiselectable='true'>
@@ -72,4 +73,5 @@ MainContent.propTypes = {
   groupMember: PropTypes.array.isRequired,
   user: PropTypes.string.isRequired,
   allGroups: PropTypes.array.isRequired,
+  groupname: PropTypes.string.isRequired,
 }

@@ -6,11 +6,16 @@ export default class GroupModal extends Component {
 
   // event to save group
   onClickGrSave() {
-    if(Session.get('newgroup')) {
-      Meteor.call('addNewGroup', this.refs.groupname.value, this.props.user, Session.get('groupmembers'));
+    if(this.refs.groupnames.value != '') {
+      if(Session.get('newgroup')) {
+        Meteor.call('addNewGroup', this.refs.groupnames.value, this.props.user, Session.get('groupmembers'));
+      } else {
+        Meteor.call('updateGroup', this.refs.groupnames.value, Session.get('groupmembers'), Session.get('editinggroupId'));
+      }
     } else {
-      Meteor.call('updateGroup', this.refs.groupname.value, Session.get('groupmembers'), Session.get('editinggroupId'));
-    }
+      alert('Group name should be entered!');
+    } 
+    Session.set('groupname', '');
   }
 
   // render employer list (is reactive)
@@ -27,6 +32,10 @@ export default class GroupModal extends Component {
     }) : null;
   }
 
+  onClickGrClosed() {
+    Session.set('groupname', '');
+  }
+
   onChange(e) {
     Session.set('groupname', e.target.value);
   }
@@ -40,9 +49,10 @@ export default class GroupModal extends Component {
               <input
                 type='text'
                 className='form-control'
-                ref='groupname'
+                ref='groupnames'
                 placeholder='Enter new group name...'
-                defaultValue={Session.get('groupname')} />
+                value={this.props.groupname}
+                onChange={this.onChange.bind(this)} />
             </div>
 
             <div className="modal-body">
@@ -63,7 +73,7 @@ export default class GroupModal extends Component {
               </div>
             </div>
             <div className='modal-footer'>
-              <button type='button' className='btn btn-default' data-dismiss='modal'> Close </button>
+              <button type='button' className='btn btn-default' data-dismiss='modal' onClick={this.onClickGrClosed.bind(this)}> Close </button>
               <button type='button' className='btn btn-primary' data-dismiss='modal' onClick={this.onClickGrSave.bind(this)}> Save </button>
             </div>
           </div>
@@ -77,4 +87,5 @@ GroupModal.propTypes = {
   employers: PropTypes.array.isRequired,
   groupMember: PropTypes.array.isRequired,
   user: PropTypes.string.isRequired,
+  groupname: PropTypes.string.isRequired,
 }
