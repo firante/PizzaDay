@@ -63,6 +63,10 @@ export default class Groups extends Component {
     Meteor.call('removeGroup', this.props.group._id);
   }
 
+  onClickCreatePizza() {
+    Session.set('editinggroupId', this.props.group._id);
+  }
+
   render() {
     let classButtonDelete = this.props.user === this.props.group.groupovner ? 'btn' : "btn disabled";
     return(
@@ -115,8 +119,14 @@ export default class Groups extends Component {
                   {this.renderAddMenuItemButton()}
                 </div>
               </div>
-            </div>
 
+              {/*create PizzaDay event*/}
+              <button
+                className='btn btn-default btn-sm'
+                data-toggle='modal'
+                data-target='#createPizzaDayModal'
+                onClick={this.onClickCreatePizza.bind(this)}> Create New PizzaDay </button>
+            </div>
           </div>
         </div>
       </div>

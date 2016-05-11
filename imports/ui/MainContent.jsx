@@ -3,6 +3,7 @@ import React, {Component, PropTypes} from 'react';
 import GroupModal from './GroupModal.jsx';
 import ModalMenuItem from './ModalMenuItem.jsx';
 import Groups from './Groups.jsx';
+import ModalCreatePizzaDay from './ModalCreatePizzaDay.jsx';
 
 export default class MainContent extends Component {
 
@@ -56,10 +57,12 @@ export default class MainContent extends Component {
               employers={this.props.employers}
               groupMember={this.props.groupMember}
               user={this.props.user}
-              groupname={this.props.groupname}/>
+              groupname={this.props.groupname} />
 
           {/*menu item modal*/}
-            <ModalMenuItem editingMenuObject={this.props.editingMenuObject}/>
+            <ModalMenuItem editingMenuObject={this.props.editingMenuObject} />
+          {/*create PizzaDay modal*/}
+            <ModalCreatePizzaDay user={ this.props.user } />
 
             <hr />
 

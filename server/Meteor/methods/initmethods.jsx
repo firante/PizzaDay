@@ -3,7 +3,8 @@
 * insert , update, remove
 */
 
-import { groups } from '../../../imports/collections/collections.jsx';
+import { groups, pizzaDays } from '../../../imports/collections/collections.jsx';
+import { getUsersWithGroup} from '../api/serverApi.jsx';
 
 Meteor.methods({
   // create new group
@@ -34,5 +35,19 @@ Meteor.methods({
   // method for remove menu item
   removeMenuItem: function(id, remObj) {
     groups.update(id, {$pull: {'menuitems': remObj}});
-  }
+  },
+
+  //event for create new PizzaDays
+  createPizzaDay: function(groupId, date, owner) {
+    pizzaDays.insert(
+      {
+        'date': date,
+        'status': 'ordering',
+        'groupID': groupId,
+        'owner': owner,
+        'users': getUsersWithGroup(groupId)
+      }
+    );
+  },
+
 });
