@@ -13,6 +13,7 @@ class App extends Component {
     Session.set('newgroup', true);
     Session.set('editgroupId', '');
     Session.set('groupname', '');
+    Session.set('editingmenuitem', {})
   }
 
   componentDidUpdate() {
@@ -31,7 +32,8 @@ class App extends Component {
                 groupMember={this.props.groupMember}
                 user={this.props.user.profile.name}
                 allGroups={this.props.allGroups}
-                groupname={this.props.groupname} />;
+                groupname={this.props.groupname}
+                editingMenuObject={this.props.editingMenuItem}/>;
     } else {
 
     }
@@ -58,5 +60,6 @@ export default createContainer (()  => {
     groupMember: Session.get('groupmembers'),
     allGroups: getAllGroups(),
     groupname: Session.get('groupname'),
+    editingMenuItem: Session.get('editingmenuitem'),
   };
 }, App);

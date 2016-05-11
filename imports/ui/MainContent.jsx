@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 import GroupModal from './GroupModal.jsx';
+import ModalMenuItem from './ModalMenuItem.jsx';
 import Groups from './Groups.jsx';
 
 export default class MainContent extends Component {
@@ -50,12 +51,16 @@ export default class MainContent extends Component {
             data-target='#modalGroup'
             onClick={this.onClickGrCreate.bind(this)} > Add new group </button>
 
-          {/*modal*/}
+          {/* group modal*/}
             <GroupModal
               employers={this.props.employers}
               groupMember={this.props.groupMember}
-              user={this.props.user} 
+              user={this.props.user}
               groupname={this.props.groupname}/>
+
+          {/*menu item modal*/}
+            <ModalMenuItem editingMenuObject={this.props.editingMenuObject}/>
+
             <hr />
 
             <div className='panel-group' id='groupspanel' role='tablist' aria-multiselectable='true'>
@@ -74,4 +79,5 @@ MainContent.propTypes = {
   user: PropTypes.string.isRequired,
   allGroups: PropTypes.array.isRequired,
   groupname: PropTypes.string.isRequired,
+  editingMenuObject: PropTypes.object.isRequired,
 }

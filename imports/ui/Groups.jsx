@@ -1,13 +1,21 @@
 import React, {Component, PropTypes} from 'react';
 
 import GroupMemberElement from './GroupMemberElement.jsx';
+import MenuItem from './MenuItem.jsx';
 
 export default class Groups extends Component {
-
+  // render group members list
   renderGroupMemberList() {
     return this.props.group.groupmembers.map((value, index) => {
       return <GroupMemberElement key={index} groupMember={value} />;
     });
+  }
+
+  // render menu item list
+  renderMenuItemList() {
+    return this.props.group.menuitems.map((value, index) => {
+      return <MenuItem menuItem={value} key={index} id={this.props.group._id}/>
+    })
   }
 
   // method for open edit group modal
@@ -20,7 +28,9 @@ export default class Groups extends Component {
 
   //method for add menu item to base
   addMenuItem() {
-    
+    Session.set('editinggroupId', this.props.group._id);
+    Session.set('editingmenuitem', {});
+    Session.set('old', {});
   }
 
   // get component for edit group of members
@@ -42,7 +52,7 @@ export default class Groups extends Component {
         className='btn btn-info btn-xs'
         type='button'
         data-toggle='modal'
-        data-target='#modalGroup'
+        data-target='#modalMenu'
         onClick={this.addMenuItem.bind(this)}> add menu item </button>
     );
   }
@@ -98,6 +108,7 @@ export default class Groups extends Component {
                 <header className='lead text-center'> Menu items </header>
 
                 <ul className='list-group'>
+                  {this.renderMenuItemList()}
                 </ul>
 
                 <div className='text-right'>
