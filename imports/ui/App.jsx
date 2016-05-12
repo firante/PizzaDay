@@ -5,7 +5,7 @@ import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import MainContent from './MainContent.jsx';
 
 import { groups } from '../collections/collections.jsx';
-import {getAllUsers, getAllGroups} from '../api/findDataFromDB.jsx';
+import {getAllUsers, getAllGroups, getAllPizzaDays} from '../api/findDataFromDB.jsx';
 
 class App extends Component {
   componentWillMount() {
@@ -33,7 +33,8 @@ class App extends Component {
                 user={this.props.user.profile.name}
                 allGroups={this.props.allGroups}
                 groupname={this.props.groupname}
-                editingMenuObject={this.props.editingMenuItem}/>;
+                allPizzaDays={this.props.allPizzaDays}
+                editingMenuObject={this.props.editingMenuItem} />;
     } else {
 
     }
@@ -59,6 +60,7 @@ export default createContainer (()  => {
     employers: getAllUsers(),
     groupMember: Session.get('groupmembers'),
     allGroups: getAllGroups(),
+    allPizzaDays: getAllPizzaDays(),
     groupname: Session.get('groupname'),
     editingMenuItem: Session.get('editingmenuitem'),
   };

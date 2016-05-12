@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
 
-import { groups, allUsers } from '../imports/collections/collections.jsx';
+import { groups, allUsers, pizzaDays } from '../imports/collections/collections.jsx';
 import './Meteor/methods/initmethods.jsx';
 
 Meteor.startup(() => {
@@ -13,5 +13,9 @@ Meteor.startup(() => {
 
   Meteor.publish('allUsers', () => {
     return Meteor.users.find({}, {'profile': 1});
+  });
+
+  Meteor.publish('pizzadays', () => {
+    return pizzaDays.find();
   });
 });

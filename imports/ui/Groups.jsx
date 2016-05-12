@@ -118,15 +118,15 @@ export default class Groups extends Component {
                 <div className='text-right'>
                   {this.renderAddMenuItemButton()}
                 </div>
-              </div>
-
-              {/*create PizzaDay event*/}
-              <button
-                className='btn btn-default btn-sm'
-                data-toggle='modal'
-                data-target='#createPizzaDayModal'
-                onClick={this.onClickCreatePizza.bind(this)}> Create New PizzaDay </button>
+              </div>          
             </div>
+
+            {/*create PizzaDay event*/}
+            <button
+              className='btn btn-default btn-sm'
+              data-toggle='modal'
+              data-target='#createPizzaDayModal'
+              onClick={this.onClickCreatePizza.bind(this)}> Create New PizzaDay </button>
           </div>
         </div>
       </div>

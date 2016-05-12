@@ -50,4 +50,20 @@ Meteor.methods({
     );
   },
 
+  //method for confirmed user participate
+  confirmedParticipate: function(pizzaDayId, userName) {
+    pizzaDays.update(
+      { _id: pizzaDayId, 'users.name': userName },
+      { $set: { 'users.$.confirmed': true } }
+    );
+  },
+
+  //method for remove user from participate
+  removeFromParticipate: function(pizzaDayId, userName) {
+    pizzaDays.update (pizzaDayId,
+      { $pull: { users: {name: userName } } },
+      {multi: true}
+    );
+  },
+
 });

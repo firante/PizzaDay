@@ -6,7 +6,7 @@ export default class ModalCreatePizzaDay extends Component {
     if(date.getDay() != 3) {
       alert('Date must be Wednesday!')
     } else {
-      Meteor.call('createPizzaDay', Session.get('editinggroupId'), this.refs.date.value, user);
+      Meteor.call('createPizzaDay', Session.get('editinggroupId'), this.refs.date.value, this.props.user);
     }
   }
 

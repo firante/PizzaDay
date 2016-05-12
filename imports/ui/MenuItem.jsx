@@ -25,7 +25,7 @@ export default class MenuItem extends Component {
           </div>
           <div className='col-xs-1 col-sm-1 col-md-1 col-lg-1'>
             <a
-              className='btn'
+              className='btn btn-xs'
               data-toggle='modal'
               data-target='#modalMenu'
               onClick={this.onClickModify.bind(this)} >
@@ -33,7 +33,7 @@ export default class MenuItem extends Component {
             </a>
           </div>
           <div className='col-xs-1 col-sm-1 col-md-1 col-lg-1'>
-            <a className='btn' onClick={this.onClickRemove.bind(this)}>
+            <a className='btn btn-xs' onClick={this.onClickRemove.bind(this)}>
               <span className="glyphicon glyphicon-remove text-warning"  aria-hidden="true"></span>
             </a>
           </div>

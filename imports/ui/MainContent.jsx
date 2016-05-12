@@ -4,6 +4,7 @@ import GroupModal from './GroupModal.jsx';
 import ModalMenuItem from './ModalMenuItem.jsx';
 import Groups from './Groups.jsx';
 import ModalCreatePizzaDay from './ModalCreatePizzaDay.jsx';
+import PizzaDays from './PizzaDays.jsx';
 
 export default class MainContent extends Component {
 
@@ -22,7 +23,12 @@ export default class MainContent extends Component {
         group={value}
         key={value._id}
         employers={this.props.employers}
-        groupMember={this.props.groupMember} />)
+        groupMember={this.props.groupMember} />);
+  }
+
+  renderAllPizzaDays() {
+    return this.props.allPizzaDays.map(value =>
+    <PizzaDays pizzaDay={value} loggedUser={this.props.user} key={value._id} /> );
   }
 
   render () {
@@ -42,6 +48,9 @@ export default class MainContent extends Component {
             <span className='lead'>
               PizzaDays
             </span>
+
+            {this.renderAllPizzaDays()}
+
           </div>
           <div role='tabpanel' className='tab-pane active' id='groups'>
         {/*New Group Modal Button*/}
@@ -81,6 +90,7 @@ MainContent.propTypes = {
   groupMember: PropTypes.array.isRequired,
   user: PropTypes.string.isRequired,
   allGroups: PropTypes.array.isRequired,
+  allPizzaDays: PropTypes.array.isRequired,
   groupname: PropTypes.string.isRequired,
   editingMenuObject: PropTypes.object.isRequired,
 }
