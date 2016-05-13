@@ -17,7 +17,7 @@ export default class PizzaUserMembers extends Component {
   // render order list of user
   renderOrder() {
     return this.props.user.order.map((value, index) => {
-      return <OrderList orderItem={value} key={index} />
+      return <OrderList loggedUser={this.props.loggedUser} orderItem={value} key={index} />
     });
   }
 
@@ -28,7 +28,10 @@ export default class PizzaUserMembers extends Component {
                   <div className='panel panel-default'>
                     <div className='panel-heading' role='tab' id={`head_${this.props.index}`}>
                       <div className='panel-title'>
-                        {this.props.user.name}
+                        <a role='button' className='collapsed' data-toggle='collapse' data-parent='#groupspanel' href={`#collapse_${this.props.index}`}
+                          aria-expanded='false' aria-controls={`collapse_${this.props.index}`}>
+                          {this.props.user.name}
+                        </a>
                       </div>
                     </div>
                     <div id={`collapse_${this.props.index}`} className='panel-collapse collapse' role='tabpanel'

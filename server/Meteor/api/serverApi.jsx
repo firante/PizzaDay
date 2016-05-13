@@ -1,4 +1,4 @@
-import { groups } from '../../../imports/collections/collections.jsx';
+import { groups, pizzaDays } from '../../../imports/collections/collections.jsx';
 
 export function getUsersWithGroup(groupId) {
   let cursor = groups.find({_id: groupId}, {fields: {_id: 0, groupmembers: 1}});

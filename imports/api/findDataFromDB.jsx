@@ -16,7 +16,7 @@ export function getAllGroups() {
 // method what get group menu items
 export function getGroupMenu(groupId) {
   Meteor.subscribe('groups');
-  return groups.findOne(groupId, {fields: {_id: 0, menuitems: 1}});
+  return groups.findOne(groupId);
 }
 
 // method for get all pizza days

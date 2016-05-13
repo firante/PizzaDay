@@ -19,8 +19,12 @@ export default class PizzaDays extends Component {
   }
 
   renderList() {
-    return getGroupMenu().menuitems.map((value, index) => {
-      return <PizzaMenuItem menulist={value} key={index} />
+    return getGroupMenu(this.props.pizzaDay.groupID).menuitems.map((value, index) => {
+      return <PizzaMenuItem
+              loggedUser={this.props.loggedUser}
+              pizzaDayId={this.props.pizzaDay._id}
+              menulist={value}
+              key={index} />
     });
   }
 
@@ -28,13 +32,13 @@ export default class PizzaDays extends Component {
     return this.props.pizzaDay.users.map((value, index) => {
       if(value.name === this.props.loggedUser && value.confirmed === true) {
         let menulist = getGroupMenu();
-        return  <ul className='list-group'>
+        return  <ul className='list-group' key={index}>
                   <li className='list-group-item'>
                     <div className='row'>
-                      <div className='col-xs-9 col-sm-9 col-md-9 col-lg-9'> Name </div>
-                      <div className='col-xs-1 col-sm-1 col-md-1 col-lg-1'> Price </div>
-                      <div className='col-xs-1 col-sm-1 col-md-1 col-lg-1'> Count </div>
-                      <div className='col-xs-1 col-sm-1 col-md-1 col-lg-1'> Confirm</div>
+                      <div className='col-xs-6 col-sm-5 col-md-6 col-lg-6 text-center'> Name </div>
+                      <div className='col-xs-1 col-sm-2 col-md-2 col-lg-2 text-center'> Price </div>
+                      <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center'> Count </div>
+                      <div className='col-xs-3 col-sm-3 col-md-2 col-lg-2 text-center'> Confirm</div>
                     </div>
                   </li>
                   {this.renderList()}

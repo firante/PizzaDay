@@ -4,7 +4,7 @@
 */
 
 import { groups, pizzaDays } from '../../../imports/collections/collections.jsx';
-import { getUsersWithGroup} from '../api/serverApi.jsx';
+import { getUsersWithGroup, getCountItem} from '../api/serverApi.jsx';
 
 Meteor.methods({
   // create new group
@@ -65,5 +65,13 @@ Meteor.methods({
       {multi: true}
     );
   },
+
+  // push new item to user menu list
+  pushUserOrder: function(pizzaDayId, userName, name, price, count) {
+    pizzaDays.update(
+      {_id: pizzaDayId, 'users.name': userName},
+      {$push: {'users.$.order' : {name: name, count: count, price: price } } }
+    );
+  }
 
 });
